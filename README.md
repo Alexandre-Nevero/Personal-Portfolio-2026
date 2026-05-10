@@ -23,6 +23,47 @@ Think of your portfolio like a house:
 
 ---
 
+## 📖 Glossary of Terms for Beginners
+If you're new to coding, here are some terms you'll see in this guide:
+*   **Repository (Repo)**: A folder where your code is saved and tracked, often hosted on the internet (like GitHub).
+*   **Clone**: Downloading a complete copy of a repository from the internet to your local computer.
+*   **Terminal / Command Line**: A text-based interface where you type commands to talk to your computer instead of clicking with a mouse.
+*   **Node.js**: The engine that allows JavaScript to run on your computer, necessary for building and running this project locally.
+*   **API Key**: A secret password that lets your website talk to an external service (in this case, the Gemini AI).
+*   **Markdown (`.md`)**: A simple way to format text using symbols (like `#` for headings or `-` for lists).
+*   **HTML**: The skeleton or structure of a website (where your text and links live).
+*   **CSS**: The styling of a website (colors, spacing, and animations).
+*   **WebP**: A modern image format that makes images smaller in file size so they load faster.
+*   **Deployment**: Moving your site from your local computer to a server on the internet so anyone can visit it.
+*   **Cloud Run / Cloud Storage**: Google Cloud services used to host your website and store your images securely.
+
+---
+
+## 📥 Prerequisites: Getting the Code & Git Basics
+Before setting up your workshop, you need to get the code onto your machine.
+
+### 1. Clone the Repository
+Open a terminal and clone the repository to your local machine:
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+cd YOUR_REPO
+```
+
+### 2. Basic Git Commands (Pushing Your Changes)
+As you customize your portfolio, you'll want to save and push your changes to your own GitHub repository from time to time. Remember the following commands if you want to push the changes you've made:
+```bash
+# Add all your changes
+git add .
+
+# Commit your changes with a message
+git commit -m "Update portfolio content and styles"
+
+# Push your changes to your repository
+git push origin main
+```
+
+---
+
 ## 🏁 Phase 1: Setting Up Your Workshop
 To see your changes as you make them, you need to run the site on your computer.
 
