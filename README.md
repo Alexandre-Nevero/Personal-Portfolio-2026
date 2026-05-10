@@ -289,9 +289,64 @@ Expected:
 {"ok":true}
 ```
 
-Open the service URL and verify the page, gallery, and chat.
+Open the service URL and verify the page, gallery, and chat. CONGRATS! YOU JUST UPLOADED YOUR PORTFOLIO IN GCP!
 
-### 7. Update later
+---
+
+## 7: Cleaning Up (Avoiding Costs)
+
+When you are done showing off the demo, you should delete the resources. This stops Google Cloud from charging you money.
+
+### Option 1: Delete the whole project (Easiest & Safest)
+
+If you made a brand new Google Cloud project just for this portfolio, the best way to stop all charges is to delete the entire project at once.
+
+Run this command in Cloud Shell:
+
+```bash
+gcloud projects delete "your-project-id"
+
+```
+
+*Note: This will permanently delete everything inside the project.*
+
+### Option 2: Delete specific services
+
+If you used an existing project and want to keep it, you must delete the specific parts the script built. Run these commands in Cloud Shell:
+
+**1. Delete the Cloud Run service:**
+
+```bash
+gcloud run services delete bryl --region asia-southeast1
+
+```
+
+**2. Delete the Cloud Storage bucket:**
+
+```bash
+gcloud storage rm --recursive gs://your-project-id-bryllim-assets
+
+```
+
+**3. Delete the Artifact Registry repository:**
+
+```bash
+gcloud artifacts repositories delete bryllim --location asia-southeast1
+
+```
+
+**4. Delete the Secret (Gemini API Key):**
+
+```bash
+gcloud secrets delete gemini-api-key
+
+```
+
+**5. Delete the Load Balancer (If you added Cloud CDN):**
+If you did the extra step to add Cloud CDN, go to your Google Cloud Console, search for **Cloud CDN** and **Load Balancing**, and delete the ones you created.
+
+
+## This phase is optional. Applicable when you want to make new changes to your site.
 
 After changes:
 
@@ -321,6 +376,8 @@ Notes:
 - Keep `Cache-Control` headers long-lived on asset objects.
 - Do not make the bucket public if you want the CDN to remain the only public path.
 - If you change asset URLs later, invalidate the CDN cache for the affected paths.
+
+---
 
 ## Updating The Site
 
