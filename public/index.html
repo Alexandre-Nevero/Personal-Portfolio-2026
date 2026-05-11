@@ -1,295 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio Template</title>
-  <meta name="description" content="A customizable portfolio template for a software engineer, builder, or creator." />
-  <meta name="author" content="Your Name" />
-  <meta name="keywords"
-    content="Portfolio Template, Software Engineer, Full Stack Developer, Web Development, JavaScript, Python, PHP" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Alex Rivera - Portfolio" />
-  <meta property="og:description"
-    content="A customizable portfolio template for a software engineer, builder, or creator." />
-  <meta property="og:url" content="https://example.com/" />
-  <meta property="og:site_name" content="Alex Rivera - Portfolio" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="__ASSET_BASE_URL__/profile-frames/frame-000.webp" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:creator" content="@alexrivera" />
-  <meta name="twitter:title" content="Alex Rivera - Portfolio" />
-  <meta name="twitter:description"
-    content="A customizable portfolio template for a software engineer, builder, or creator." />
-  <meta name="twitter:image" content="__ASSET_BASE_URL__/profile-frames/frame-000.webp" />
-  <link rel="icon" href="__ASSET_BASE_URL__/favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
-  <link rel="icon" href="__ASSET_BASE_URL__/favicons/favicon.ico" sizes="any" />
-  <link rel="apple-touch-icon" href="__ASSET_BASE_URL__/favicons/apple-touch-icon.png" sizes="180x180" />
-  <link rel="stylesheet" href="/styles.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script nonce="__CSP_NONCE__">
-    tailwind.config = {
-      corePlugins: {
-        preflight: false,
-      },
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            accent: {
-              DEFAULT: '#36518f',
-              strong: '#243a69',
-            },
-          }
-        }
-      }
-    }
-  </script>
-  <script nonce="__CSP_NONCE__">
-    document.documentElement.classList.toggle("dark", localStorage.getItem("theme") === "dark");
-  </script>
-  <script type="application/ld+json" nonce="__CSP_NONCE__">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Person",
-            "@id": "https://example.com/#person",
-            "name": "Alex Rivera",
-            "jobTitle": "Software Engineer",
-            "description": "A customizable portfolio template for a software engineer, builder, or creator.",
-            "image": "https://example.com/profile.webp",
-            "sameAs": ["https://linkedin.com/in/alexrivera", "https://github.com/alexrivera", "https://www.instagram.com/alexrivera/"]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://example.com/#website",
-            "url": "https://example.com",
-            "name": "Alex Rivera - Portfolio",
-            "publisher": { "@id": "https://example.com/#person" }
-          }
-        ]
-      }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandre Nevero | Data Scientist</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <main class="page">
-    <section class="intro">
-      <img class="portrait asset" data-asset="profile-frames/frame-000.webp" alt="Profile placeholder" width="160"
-        height="160" />
-      <div class="intro-copy">
-        <div class="name-row">
-          <h1>Alex Rivera</h1>
-          <button class="theme-toggle" type="button" aria-label="Toggle theme"><span></span></button>
-        </div>
-        <p class="location">⌖ San Francisco, CA</p>
-        <div class="role-row">
-          <p>Software Engineer \ Product Builder \ Content Creator</p>
-        </div>
-        <nav class="flex flex-col sm:flex-row gap-3 mt-5" aria-label="Primary">
-          <a class="flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white rounded-xl font-bold transition-all duration-300 hover:bg-accent-strong hover:-translate-y-0.5 shadow-md hover:shadow-lg"
-            href="https://cal.com/your-handle" target="_blank" rel="noreferrer"><svg class="w-4 h-4" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-            </svg> Schedule a Call</a>
-          <a class="flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-accent dark:text-white border border-accent/20 dark:border-white/20 rounded-xl font-bold transition-all duration-300 hover:bg-accent/5 dark:hover:bg-white/5 hover:-translate-y-0.5"
-            href="mailto:hello@example.com"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-              </path>
-            </svg> Send Email</a>
-          <a class="flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-accent dark:text-white border border-accent/20 dark:border-white/20 rounded-xl font-bold transition-all duration-300 hover:bg-accent/5 dark:hover:bg-white/5 hover:-translate-y-0.5"
-            href="https://blog.bryllim.com" target="_blank" rel="noreferrer"><svg class="w-4 h-4" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H14">
-              </path>
-            </svg> Read my blog</a>
-        </nav>
-      </div>
-    </section>
+    <!-- Background Canvas -->
+    <canvas id="neural-canvas"></canvas>
 
-    <div class="content-grid">
-      <section class="about">
-        <h2>About</h2>
-        <p>
-          I’m a full-stack software engineer specializing in modern web applications, mobile apps, and practical digital
-          experiences. This template is built to be edited with your own story, skills, and links.
-        </p>
-        <p>
-          I help teams ship useful products, streamline workflows, and turn ideas into polished software.
-        </p>
-        <p>
-          Lately, I’ve been focused on AI-assisted products, automation, and developer tooling.
-        </p>
-      </section>
+    <!-- Audio Controls -->
+    <button id="audio-toggle" class="glass-panel" aria-label="Toggle Neural Soundscape">
+        <span class="status-indicator"></span> Audio: OFF
+    </button>
 
-      <aside class="side-rail">
-        <section class="experience">
-          <h2>Experience</h2>
-          <ol>
-            <li class="active"><b>Senior Software Engineer</b><span>Company Name</span><time>2025</time></li>
-            <li><b>Full-Stack Developer</b><span>Startup Studio</span><time>2024</time></li>
-            <li><b>Frontend Engineer</b><span>Product Team</span><time>2022</time></li>
-            <li><b>Application Developer</b><span>Agency Name</span><time>2021</time></li>
-            <li><b>Software Engineer</b><span>Company Name</span><time>2020</time></li>
-            <li><b>Computer Science / IT</b><span>Your University</span><time>2019</time></li>
-            <li><b>Hello World! 👋🏻</b><span>Wrote my first line of code</span><time>2015</time></li>
-          </ol>
+    <main id="app-container">
+        <!-- Input Layer (Hero) -->
+        <header id="input-layer" class="section">
+            <div class="glass-panel content-wrapper">
+                <div class="meta-tag">&lt;layer_type="input"&gt;</div>
+                <h1 class="glitch-text" data-text="Alexandre Nevero">Alexandre Nevero</h1>
+                <h2 class="subtitle">Data Scientist // Analyst // Thinker</h2>
+                <p class="hero-desc">Extracting signal from noise. Modeling reality through code, courts, and chords.</p>
+                <div class="scroll-indicator">
+                    <span class="mouse-icon"></span>
+                    <span class="scroll-text">Initiate Forward Pass</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hidden Layers (About) -->
+        <section id="hidden-layers" class="section">
+            <div class="glass-panel content-wrapper">
+                <div class="meta-tag">&lt;layer_type="hidden_processing"&gt;</div>
+                <h2>Hidden Layers</h2>
+                <div class="split-content">
+                    <div class="text-block">
+                        <p>I am a first-year Data Science student obsessed with finding the underlying patterns in complex systems. My work exists at the intersection of rigorous statistical analysis and creative problem-solving.</p>
+                        <p>Whether I'm analyzing a basketball team's shot selection, exploring the mathematics of musical harmony, or pondering philosophical frameworks of ethics in AI, I believe data is just philosophy expressed in numbers.</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-val">Logic</span>
+                            <span class="stat-label">Python, SQL, R</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-val">Rhythm</span>
+                            <span class="stat-label">Analytics & Flow</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-val">Form</span>
+                            <span class="stat-label">Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-      </aside>
 
-      <section class="stack">
-        <div class="section-head">
-          <h2>Tech Stack</h2><a href="/tech-stack">View All ›</a>
-        </div>
-        <h3>Frontend</h3>
-        <div class="tags">
-          <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Vue.js</span><span>Tailwind
-            CSS</span></div>
-        <h3>Backend</h3>
-        <div class="tags">
-          <span>Node.js</span><span>Python</span><span>PHP</span><span>Laravel</span><span>PostgreSQL</span><span>MongoDB</span>
-        </div>
-        <h3>DevOps & Cloud</h3>
-        <div class="tags"><span>AWS</span><span>Docker</span><span>Kubernetes</span><span>GitHub Actions</span></div>
-      </section>
-
-      <section class="projects">
-        <div class="section-head">
-          <h2>Recent Projects</h2><a href="/projects">View All ›</a>
-        </div>
-        <div class="card-grid">
-          <a href="https://example.com/project-one" target="_blank" rel="noreferrer"><b>Project One</b><span>Short
-              project description</span><code>example.com/project-one</code></a>
-          <a href="https://example.com/project-two" target="_blank" rel="noreferrer"><b>Project Two</b><span>Short
-              project description</span><code>example.com/project-two</code></a>
-          <a href="https://example.com/project-three" target="_blank" rel="noreferrer"><b>Project Three</b><span>Short
-              project description</span><code>example.com/project-three</code></a>
-          <a href="https://example.com/project-four" target="_blank" rel="noreferrer"><b>Project Four</b><span>Short
-              project description</span><code>example.com/project-four</code></a>
-        </div>
-      </section>
-
-      <section class="certs">
-        <div class="section-head">
-          <h2>Recent Certifications</h2><a href="/certifications">View All ›</a>
-        </div>
-        <a href="https://example.com/certificate-one" target="_blank" rel="noreferrer"><b>Certification
-            One</b><span>Provider Name</span></a>
-        <a href="https://example.com/certificate-two" target="_blank" rel="noreferrer"><b>Certification
-            Two</b><span>Provider Name</span></a>
-        <a href="https://example.com/certificate-three" target="_blank" rel="noreferrer"><b>Certification
-            Three</b><span>Provider Name</span></a>
-        <a href="https://example.com/certificate-four" target="_blank" rel="noreferrer"><b>Certification
-            Four</b><span>Provider Name</span></a>
-      </section>
-    </div>
-
-    <section class="link-panels">
-      <div>
-        <p>A member of</p>
-        <div class="flex flex-col gap-2 mt-2">
-          <a href="https://www.aap.ph" target="_blank" rel="noreferrer" class="hover:text-accent transition-colors">Analytics & Artificial Intelligence Association of the Philippines (AAP) ↗</a>
-          <a href="https://www.psia.org.ph" target="_blank" rel="noreferrer" class="hover:text-accent transition-colors">Philippine Software Industry Association ↗</a>
-        </div>
-      </div>
-      <div>
-        <p>Social Links</p>
-        <div class="flex flex-col gap-3 mt-2">
-          <a href="https://linkedin.com/in/alexrivera" target="_blank" rel="noreferrer"
-            class="flex items-center gap-2.5 hover:text-accent transition-colors"><svg class="w-4 h-4 opacity-80" fill="currentColor" viewBox="0 0 24 24"
-              aria-hidden="true">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z">
-              </path>
-            </svg> LinkedIn</a>
-          <a href="https://github.com/alexrivera" target="_blank" rel="noreferrer" class="flex items-center gap-2.5 hover:text-accent transition-colors"><svg
-              class="w-4 h-4 opacity-80" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd"
-                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                clip-rule="evenodd"></path>
-            </svg> GitHub</a>
-          <a href="https://www.instagram.com/alexrivera/" target="_blank" rel="noreferrer"
-            class="flex items-center gap-2.5 hover:text-accent transition-colors"><svg class="w-4 h-4 opacity-80" fill="currentColor" viewBox="0 0 24 24"
-              aria-hidden="true">
-              <path fill-rule="evenodd"
-                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                clip-rule="evenodd"></path>
-            </svg> Instagram</a>
-        </div>
-        <div class="flex flex-col gap-2 mt-4 sm:mt-0">
-          <a class="group p-2.5 rounded-md bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.06] dark:hover:bg-white/[0.06] border border-black/[0.03] dark:border-white/[0.03] transition-all duration-200 block" href="mailto:alex@example.com">
-            <div class="flex items-center gap-1.5 mb-1 opacity-60">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-              <p class="text-[9px] font-bold uppercase tracking-wider leading-none">Email</p>
+        <!-- Activation Functions (Projects) -->
+        <section id="activation-functions" class="section">
+            <div class="glass-panel content-wrapper">
+                <div class="meta-tag">&lt;layer_type="activation_functions"&gt;</div>
+                <h2>Activation Functions</h2>
+                <div class="project-grid">
+                    <div class="project-card neuron-node" data-project="1">
+                        <div class="project-header">
+                            <h3>Shot Matrix Analysis</h3>
+                            <span class="badge">Basketball</span>
+                        </div>
+                        <p>A spatial analysis of NBA shooting efficiency using K-Means clustering to identify optimal offensive court spacing.</p>
+                        <div class="tech-stack">Python • Pandas • Matplotlib</div>
+                    </div>
+                    <div class="project-card neuron-node" data-project="2">
+                        <div class="project-header">
+                            <h3>Harmonic Classifier</h3>
+                            <span class="badge">Music</span>
+                        </div>
+                        <p>A machine learning model trained on raw audio waveforms to predict musical genres and harmonic complexity.</p>
+                        <div class="tech-stack">TensorFlow • Librosa</div>
+                    </div>
+                    <div class="project-card neuron-node" data-project="3">
+                        <div class="project-header">
+                            <h3>The Ethical Algorithmic</h3>
+                            <span class="badge">Philosophy</span>
+                        </div>
+                        <p>An interactive essay and data visualization exploring bias in automated decision-making systems.</p>
+                        <div class="tech-stack">D3.js • HTML/CSS</div>
+                    </div>
+                </div>
             </div>
-            <p class="text-[11px] font-semibold group-hover:text-accent transition-colors leading-none">alex@example.com</p>
-          </a>
-          <a class="group p-2.5 rounded-md bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.06] dark:hover:bg-white/[0.06] border border-black/[0.03] dark:border-white/[0.03] transition-all duration-200 block" href="https://cal.com/alexrivera" target="_blank" rel="noreferrer">
-            <div class="flex items-center gap-1.5 mb-1 opacity-60">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              <p class="text-[9px] font-bold uppercase tracking-wider leading-none">Let's Talk</p>
+        </section>
+
+        <!-- Weights & Biases (Skills) -->
+        <section id="weights-biases" class="section">
+            <div class="glass-panel content-wrapper">
+                <div class="meta-tag">&lt;layer_type="weights_and_biases"&gt;</div>
+                <h2>Weights & Biases</h2>
+                <p class="subtitle">The parameters that define the model.</p>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h3>Core Compute</h3>
+                        <ul class="terminal-list">
+                            <li>> Python (Pandas, NumPy, Scikit-learn)</li>
+                            <li>> SQL & Relational Databases</li>
+                            <li>> Data Cleaning & Preprocessing</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Visualization</h3>
+                        <ul class="terminal-list">
+                            <li>> Matplotlib & Seaborn</li>
+                            <li>> HTML5 Canvas & GSAP</li>
+                            <li>> Tableau Fundamentals</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Heatmap Legend for Canvas -->
+                <div id="heatmap-legend" class="hidden-ui">
+                    <span>Court Heatmap Active: Overlaying Spatial Shot Data</span>
+                </div>
             </div>
-            <div class="flex items-center justify-between leading-none">
-              <span class="text-[11px] font-semibold group-hover:text-accent transition-colors">Schedule a Call</span>
-              <svg class="w-3 h-3 group-hover:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg>
+        </section>
+
+        <!-- Output Layer (Contact) -->
+        <footer id="output-layer" class="section">
+            <div class="glass-panel content-wrapper">
+                <div class="meta-tag">&lt;layer_type="output"&gt;</div>
+                <h2>Output Layer</h2>
+                <p>The final prediction: We should collaborate.</p>
+                <div class="contact-links">
+                    <a href="mailto:contact@example.com" class="neon-btn">Initialize Protocol: Email</a>
+                    <a href="#" class="neon-btn secondary">Access Vector: GitHub</a>
+                    <a href="#" class="neon-btn secondary">Access Vector: LinkedIn</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>System v1.0.0 // 2026 // Built with raw data and neural rhythms.</p>
+                </div>
             </div>
-          </a>
-          <a class="group p-2.5 rounded-md bg-black/[0.03] dark:bg-white/[0.03] hover:bg-black/[0.06] dark:hover:bg-white/[0.06] border border-black/[0.03] dark:border-white/[0.03] transition-all duration-200 block" href="https://blog.bryllim.com" target="_blank" rel="noreferrer">
-            <div class="flex items-center gap-1.5 mb-1 opacity-60">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H14"></path></svg>
-              <p class="text-[9px] font-bold uppercase tracking-wider leading-none">Blog</p>
-            </div>
-            <div class="flex items-center justify-between leading-none">
-              <span class="text-[11px] font-semibold group-hover:text-accent transition-colors">Read my blog</span>
-              <svg class="w-3 h-3 group-hover:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg>
-            </div>
-          </a>
-        </div>
-      </section>
+        </footer>
+    </main>
 
-
-    <section class="gallery">
-      <h2>Gallery</h2>
-      <div class="gallery-shell">
-        <button class="gallery-prev" type="button" aria-label="Previous image">‹</button>
-        <div class="gallery-track" id="gallery-track"></div>
-        <button class="gallery-next" type="button" aria-label="Next image">›</button>
-      </div>
-    </section>
-  </main>
-
-  <footer>© 2026 GDG Cloud Solutions. All rights reserved.</footer>
-
-  <section class="chat-widget" aria-label="Chat with Bryl">
-    <button class="chat-launcher flex items-center gap-2" type="button"><svg class="w-5 h-5" fill="none"
-        stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-        </path>
-      </svg> Chat with Bryl</button>
-    <div class="chat-panel" hidden>
-      <div class="chat-head">
-        <b>Chat with Bryl</b>
-        <button type="button" aria-label="Close chat">×</button>
-      </div>
-      <div class="chat-log" id="chat-log">
-        <p class="assistant">Hi! I'm an AI assistant. I can answer questions about Bryl's portfolio, projects, and
-          availability.</p>
-      </div>
-      <form class="chat-form">
-        <input name="message" autocomplete="off" placeholder="Ask a question..." />
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </section>
-
-  <script src="/config.js"></script>
-  <script src="/main.js"></script>
+    <!-- Scripts: GSAP & Custom Logic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
 </body>
-
 </html>
