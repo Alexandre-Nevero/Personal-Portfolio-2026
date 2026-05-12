@@ -292,9 +292,9 @@ p {
 }
 
 /* Position the neuron wrappers on the edge of the rings and undo their local Z rotation */
-.ring-1 .neuron { transform: rotateZ(var(--angle)) translateY(-130px) rotateZ(calc(-1 * var(--angle))); --glow-color: var(--color-magenta); }
-.ring-2 .neuron { transform: rotateZ(var(--angle)) translateY(-170px) rotateZ(calc(-1 * var(--angle))); --glow-color: var(--color-cyan); }
-.ring-3 .neuron { transform: rotateZ(var(--angle)) translateY(-210px) rotateZ(calc(-1 * var(--angle))); --glow-color: var(--color-green); }
+.ring-1 .neuron { transform: rotateZ(calc(var(--angle-deg) * 1deg)) translateY(-130px) rotateZ(calc(-1 * var(--angle-deg) * 1deg)); --glow-color: var(--color-magenta); }
+.ring-2 .neuron { transform: rotateZ(calc(var(--angle-deg) * 1deg)) translateY(-170px) rotateZ(calc(-1 * var(--angle-deg) * 1deg)); --glow-color: var(--color-cyan); }
+.ring-3 .neuron { transform: rotateZ(calc(var(--angle-deg) * 1deg)) translateY(-210px) rotateZ(calc(-1 * var(--angle-deg) * 1deg)); --glow-color: var(--color-green); }
 
 .sphere {
     position: absolute;
@@ -315,13 +315,46 @@ p {
 .spin-2-reverse { animation: spin var(--duration) linear infinite; }
 .spin-3-reverse { animation: spin-reverse var(--duration) linear infinite; }
 
-.ring-1 .sphere { transform: rotateY(calc(-1 * var(--ry))) rotateX(calc(-1 * var(--rx))); }
-.ring-2 .sphere { transform: rotateY(calc(-1 * var(--ry))) rotateX(calc(-1 * var(--rx))); }
-.ring-3 .sphere { transform: rotateY(calc(-1 * var(--ry))) rotateX(calc(-1 * var(--rx))); }
+.ring-1 .sphere, .ring-3 .sphere { 
+    transform: rotateY(calc(-1 * var(--ry))) rotateX(calc(-1 * var(--rx))); 
+    animation: 
+        shift-light 2s ease-in-out infinite alternate, 
+        opacity-sync var(--duration) linear infinite;
+    /* For forward spin, phase shift requires negative delay */
+    animation-delay: 
+        calc(var(--delay, 0) * 1s), 
+        calc(-1 * var(--duration) * (var(--angle-deg) / 360));
+}
 
-/* Keep spheres transparent so they don't distract from the center profile */
+.ring-2 .sphere { 
+    transform: rotateY(calc(-1 * var(--ry))) rotateX(calc(-1 * var(--rx))); 
+    animation: 
+        shift-light 2s ease-in-out infinite alternate, 
+        opacity-sync var(--duration) linear infinite;
+    /* For reverse spin, phase shift requires positive delay */
+    animation-delay: 
+        calc(var(--delay, 0) * 1s), 
+        calc(var(--duration) * (var(--angle-deg) / 360));
+}
+
+/* Base sphere styling */
 .sphere {
-    opacity: 0.4;
+    opacity: 0.7; /* Default opacity overridden by sync */
+}
+
+@keyframes opacity-sync {
+    0%, 100% { opacity: 0.7; }
+    30%, 70% { opacity: 0.55; }
+    50% { opacity: 0.4; } /* 50% is when it crosses the bottom of the tilted ring (closest to camera) */
+}
+
+@keyframes shift-light {
+    0% { 
+        box-shadow: 0 0 5px 1px var(--glow-color), inset -1px -1px 3px rgba(0,0,0,0.6); 
+    }
+    100% { 
+        box-shadow: 0 0 20px 4px var(--glow-color), inset -1px -1px 3px rgba(0,0,0,0.6); 
+    }
 }
 
 @keyframes spin {
