@@ -8,20 +8,20 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Main Navigation -->
-    <nav id="main-nav" class="glass-panel-nav">
+    <nav id="main-nav" class="minimal-nav">
+        <div class="nav-brand">alexandre.</div>
         <ul>
-            <li><a href="#home" class="nav-link">// Home</a></li>
-            <li><a href="#about" class="nav-link">// About</a></li>
-            <li><a href="#projects" class="nav-link">// Projects</a></li>
-            <li><a href="#skills" class="nav-link">// Skills</a></li>
-            <li><a href="#contact" class="nav-link">// Contact</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
     </nav>
 
@@ -35,25 +35,39 @@
 
     <main id="app-container">
         <!-- Hero Section -->
-        <header id="home" class="section">
-            <div class="glass-panel content-wrapper">
-                <div class="meta-tag">// 01_INTRODUCTION</div>
-                <h1 class="glitch-text" data-text="Alexandre Nevero">Alexandre Nevero</h1>
-                <h2 class="subtitle">Data Scientist // Analyst // Thinker</h2>
-                <p class="hero-desc">Extracting signal from noise. Modeling reality through code, courts, and chords.</p>
-                <div class="hero-actions">
-                    <a href="assets/resume.pdf" target="_blank" class="neon-btn">Download CV</a>
+        <header id="home" class="section hero-section">
+            <div class="hero-grid content-wrapper">
+                <div class="hero-content">
+                    <div class="tech-pills">
+                        <span class="pill">data-science</span>
+                        <span class="pill">analytics</span>
+                        <span class="pill">visualization</span>
+                    </div>
+                    <h1>Hello, I'm<br><span class="highlight-text">Alexandre.</span></h1>
+                    <p class="hero-desc">An analytical thinker and developer with a passion for extracting signal from noise. Modeling reality through code, courts, and chords.</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="neon-btn">Get in touch</a>
+                        <a href="assets/resume.pdf" target="_blank" class="neon-btn secondary">Download CV</a>
+                    </div>
                 </div>
-                <div class="scroll-indicator">
-                    <span class="mouse-icon"></span>
-                    <span class="scroll-text">Scroll to Explore</span>
+                <div class="hero-image-col">
+                    <div class="hero-image-wrapper">
+                        <!-- Placeholder for your image -->
+                        <div class="abstract-placeholder">
+                            <div class="noise-overlay"></div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="scroll-indicator minimal">
+                <span class="scroll-text">Scroll to discover</span>
+                <span class="dot"></span>
             </div>
         </header>
 
         <!-- About Section -->
         <section id="about" class="section">
-            <div class="glass-panel content-wrapper">
+            <div class="content-wrapper">
                 <div class="meta-tag">// 02_ABOUT_ME</div>
                 <h2>About Me</h2>
                 <div class="split-content">
@@ -81,7 +95,7 @@
 
         <!-- Projects Section -->
         <section id="projects" class="section">
-            <div class="glass-panel content-wrapper">
+            <div class="content-wrapper">
                 <div class="meta-tag">// 03_PROJECTS</div>
                 <h2>Featured Work</h2>
                 <div class="project-grid">
@@ -134,7 +148,7 @@
 
         <!-- Skills Section -->
         <section id="skills" class="section">
-            <div class="glass-panel content-wrapper">
+            <div class="content-wrapper">
                 <div class="meta-tag">// 04_SKILLS</div>
                 <h2>Technical Toolkit</h2>
                 <p class="subtitle">The tools and technologies I use.</p>
@@ -165,7 +179,7 @@
 
         <!-- Contact Section -->
         <footer id="contact" class="section">
-            <div class="glass-panel content-wrapper">
+            <div class="content-wrapper">
                 <div class="meta-tag">// 05_CONTACT</div>
                 <h2>Get In Touch</h2>
                 <p>Interested in working together? Let's connect.</p>

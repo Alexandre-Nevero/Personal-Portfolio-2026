@@ -1,5 +1,6 @@
 // --- Canvas & Neural Network System ---
 const canvas = document.getElementById('neural-canvas');
+canvas.style.opacity = '0.4'; // Reduced opacity to keep focus on the clean UI
 const ctx = canvas.getContext('2d');
 
 let width, height;
@@ -199,7 +200,7 @@ gsap.utils.toArray('.section').forEach(section => {
     // Skip hero section as it has a separate pin animation
     if (section.id === 'home') return;
     
-    const panel = section.querySelector('.glass-panel');
+    const panel = section.querySelector('.content-wrapper');
     gsap.fromTo(panel, 
         { y: 100, opacity: 0 },
         {
@@ -217,7 +218,7 @@ gsap.utils.toArray('.section').forEach(section => {
 });
 
 // 2.5 Hero Section Parallax (no pin to avoid flex container issues)
-gsap.to('#home .glass-panel', {
+gsap.to('#home .hero-grid', {
     y: 150,
     opacity: 0,
     ease: "none",
