@@ -164,6 +164,22 @@ animate();
 // --- GSAP ScrollTrigger Integration ---
 gsap.registerPlugin(ScrollTrigger);
 
+// --- Navigation Scroll Logic ---
+let lastScrollY = window.scrollY;
+const nav = document.getElementById('main-nav');
+gsap.to(nav, { yPercent: 0, duration: 0.5, ease: "power3.out" });
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        // Scrolling down
+        gsap.to(nav, { yPercent: -150, duration: 0.3, ease: "power2.in" });
+    } else {
+        // Scrolling up
+        gsap.to(nav, { yPercent: 0, duration: 0.3, ease: "power2.out" });
+    }
+    lastScrollY = window.scrollY;
+});
+
 // 1. The "Forward Pass" animation: Moves a pulse line across the canvas based on scroll
 gsap.to(window, {
     scrollTrigger: {
@@ -178,25 +194,185 @@ gsap.to(window, {
     }
 });
 
-// 2. Animate sections fading in
+// 2. Animate sections with slight parallax and fade-in
 gsap.utils.toArray('.section').forEach(section => {
+    // Skip hero section as it has a separate pin animation
+    if (section.id === 'home') return;
+    
     const panel = section.querySelector('.glass-panel');
-    gsap.from(panel, {
-        scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out"
-    });
+    gsap.fromTo(panel, 
+        { y: 100, opacity: 0 },
+        {
+            y: 0,
+            opacity: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                end: "center center",
+                scrub: 1
+            }
+        }
+    );
 });
 
-// 3. Toggle Heatmap in the Weights & Biases section
+// 2.5 Hero Section Parallax (no pin to avoid flex container issues)
+gsap.to('#home .glass-panel', {
+    y: 150,
+    opacity: 0,
+    ease: "none",
+    scrollTrigger: {
+        trigger: '#home',
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+    }
+});
+
+// 2.6 ScrollTrigger Batch for Projects
+ScrollTrigger.batch(".project-card", {
+    onEnter: batch => {
+        gsap.fromTo(batch, 
+            { opacity: 0, y: 50 }, 
+            { opacity: 1, y: 0, stagger: 0.15, overwrite: true, duration: 0.8, ease: "power3.out" }
+        );
+        // Initialize D3 visualizations
+        batch.forEach(card => {
+            const projectId = card.getAttribute('data-project');
+            if (projectId === "1") drawShotMatrix("#viz-shot-matrix");
+            if (projectId === "2") drawHarmonicWaves("#viz-harmonic");
+            if (projectId === "3") drawNeuralNetwork("#viz-ethical");
+        });
+    },
+    start: "top 85%"
+});
+
+// --- D3.js Mini-Visualizations ---
+function drawShotMatrix(containerId) {
+    const container = d3.select(containerId);
+    if (!container.select("svg").empty()) return;
+
+    const width = container.node().clientWidth;
+    const height = container.node().clientHeight;
+    
+    const svg = container.append("svg").attr("width", width).attr("height", height);
+
+    const data = Array.from({length: 120}, () => {
+        const cluster = Math.floor(Math.random() * 3);
+        let x, y;
+        if (cluster === 0) { x = Math.random() * 0.3 + 0.1; y = Math.random() * 0.4 + 0.1; }
+        else if (cluster === 1) { x = Math.random() * 0.4 + 0.5; y = Math.random() * 0.3 + 0.1; }
+        else { x = Math.random() * 0.4 + 0.3; y = Math.random() * 0.4 + 0.5; }
+        return { x: x * width, y: y * height, val: Math.random() };
+    });
+
+    const circles = svg.selectAll("circle")
+        .data(data)
+        .join("circle")
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y)
+        .attr("r", 0)
+        .attr("fill", colors.magenta)
+        .attr("opacity", 0.6);
+
+    circles.transition()
+        .duration(1000)
+        .delay((d, i) => i * 8)
+        .attr("r", d => d.val * 5 + 2)
+        .ease(d3.easeElasticOut);
+}
+
+function drawHarmonicWaves(containerId) {
+    const container = d3.select(containerId);
+    if (!container.select("svg").empty()) return;
+
+    const width = container.node().clientWidth;
+    const height = container.node().clientHeight;
+    
+    const svg = container.append("svg").attr("width", width).attr("height", height);
+    const numBars = 30;
+    const barWidth = width / numBars - 2;
+
+    const data = Array.from({length: numBars}, () => Math.random() * height * 0.8);
+
+    const bars = svg.selectAll("rect")
+        .data(data)
+        .join("rect")
+        .attr("x", (d, i) => i * (width / numBars))
+        .attr("y", height)
+        .attr("width", barWidth)
+        .attr("height", 0)
+        .attr("fill", colors.cyan);
+
+    bars.transition()
+        .duration(800)
+        .delay((d, i) => i * 30)
+        .attr("y", d => height - d)
+        .attr("height", d => d)
+        .ease(d3.easeCubicOut)
+        .on("end", function loop() {
+            d3.select(this).transition()
+                .duration(1000 + Math.random() * 1000)
+                .attr("y", d => height - (d * (0.8 + Math.random() * 0.4)))
+                .attr("height", d => d * (0.8 + Math.random() * 0.4))
+                .on("end", loop);
+        });
+}
+
+function drawNeuralNetwork(containerId) {
+    const container = d3.select(containerId);
+    if (!container.select("svg").empty()) return;
+
+    const width = container.node().clientWidth;
+    const height = container.node().clientHeight;
+    
+    const svg = container.append("svg").attr("width", width).attr("height", height);
+
+    const nodes = Array.from({length: 15}, (_, i) => ({ id: i }));
+    const links = Array.from({length: 20}, () => ({
+        source: Math.floor(Math.random() * 15),
+        target: Math.floor(Math.random() * 15)
+    })).filter(l => l.source !== l.target);
+
+    const simulation = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).distance(40))
+        .force("charge", d3.forceManyBody().strength(-30))
+        .force("center", d3.forceCenter(width / 2, height / 2));
+
+    const link = svg.append("g")
+        .attr("stroke", "rgba(6, 214, 160, 0.3)")
+        .selectAll("line")
+        .data(links)
+        .join("line");
+
+    const node = svg.append("g")
+        .selectAll("circle")
+        .data(nodes)
+        .join("circle")
+        .attr("r", 0)
+        .attr("fill", colors.green);
+
+    node.transition()
+        .duration(1000)
+        .attr("r", 5)
+        .ease(d3.easeBounceOut);
+
+    simulation.on("tick", () => {
+        link
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+
+        node
+            .attr("cx", d => d.x = Math.max(5, Math.min(width - 5, d.x)))
+            .attr("cy", d => d.y = Math.max(5, Math.min(height - 5, d.y)));
+    });
+}
+
+// 3. Toggle Heatmap in the Skills section
 ScrollTrigger.create({
-    trigger: "#weights-biases",
+    trigger: "#skills",
     start: "top 50%",
     end: "bottom 50%",
     onEnter: () => {

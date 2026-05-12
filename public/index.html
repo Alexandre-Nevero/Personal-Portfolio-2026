@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Main Navigation -->
+    <nav id="main-nav" class="glass-panel-nav">
+        <ul>
+            <li><a href="#home" class="nav-link">// Home</a></li>
+            <li><a href="#about" class="nav-link">// About</a></li>
+            <li><a href="#projects" class="nav-link">// Projects</a></li>
+            <li><a href="#skills" class="nav-link">// Skills</a></li>
+            <li><a href="#contact" class="nav-link">// Contact</a></li>
+        </ul>
+    </nav>
+
     <!-- Background Canvas -->
     <canvas id="neural-canvas"></canvas>
 
@@ -23,25 +34,28 @@
     </button>
 
     <main id="app-container">
-        <!-- Input Layer (Hero) -->
-        <header id="input-layer" class="section">
+        <!-- Hero Section -->
+        <header id="home" class="section">
             <div class="glass-panel content-wrapper">
-                <div class="meta-tag">&lt;layer_type="input"&gt;</div>
+                <div class="meta-tag">// 01_INTRODUCTION</div>
                 <h1 class="glitch-text" data-text="Alexandre Nevero">Alexandre Nevero</h1>
                 <h2 class="subtitle">Data Scientist // Analyst // Thinker</h2>
                 <p class="hero-desc">Extracting signal from noise. Modeling reality through code, courts, and chords.</p>
+                <div class="hero-actions">
+                    <a href="assets/resume.pdf" target="_blank" class="neon-btn">Download CV</a>
+                </div>
                 <div class="scroll-indicator">
                     <span class="mouse-icon"></span>
-                    <span class="scroll-text">Initiate Forward Pass</span>
+                    <span class="scroll-text">Scroll to Explore</span>
                 </div>
             </div>
         </header>
 
-        <!-- Hidden Layers (About) -->
-        <section id="hidden-layers" class="section">
+        <!-- About Section -->
+        <section id="about" class="section">
             <div class="glass-panel content-wrapper">
-                <div class="meta-tag">&lt;layer_type="hidden_processing"&gt;</div>
-                <h2>Hidden Layers</h2>
+                <div class="meta-tag">// 02_ABOUT_ME</div>
+                <h2>About Me</h2>
                 <div class="split-content">
                     <div class="text-block">
                         <p>I am a first-year Data Science student obsessed with finding the underlying patterns in complex systems. My work exists at the intersection of rigorous statistical analysis and creative problem-solving.</p>
@@ -65,46 +79,65 @@
             </div>
         </section>
 
-        <!-- Activation Functions (Projects) -->
-        <section id="activation-functions" class="section">
+        <!-- Projects Section -->
+        <section id="projects" class="section">
             <div class="glass-panel content-wrapper">
-                <div class="meta-tag">&lt;layer_type="activation_functions"&gt;</div>
-                <h2>Activation Functions</h2>
+                <div class="meta-tag">// 03_PROJECTS</div>
+                <h2>Featured Work</h2>
                 <div class="project-grid">
                     <div class="project-card neuron-node" data-project="1">
-                        <div class="project-header">
-                            <h3>Shot Matrix Analysis</h3>
-                            <span class="badge">Basketball</span>
+                        <div class="viz-container" id="viz-shot-matrix"></div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>Shot Matrix Analysis</h3>
+                                <span class="badge">Basketball</span>
+                            </div>
+                            <p>A spatial analysis of NBA shooting efficiency using K-Means clustering to identify optimal offensive court spacing.</p>
+                            <div class="tech-stack">Python • Pandas • Matplotlib</div>
+                            <div class="action-links">
+                                <a href="#" class="neon-btn secondary small-btn">View Source</a>
+                                <a href="#" class="neon-btn secondary small-btn">Case Study</a>
+                            </div>
                         </div>
-                        <p>A spatial analysis of NBA shooting efficiency using K-Means clustering to identify optimal offensive court spacing.</p>
-                        <div class="tech-stack">Python • Pandas • Matplotlib</div>
                     </div>
                     <div class="project-card neuron-node" data-project="2">
-                        <div class="project-header">
-                            <h3>Harmonic Classifier</h3>
-                            <span class="badge">Music</span>
+                        <div class="viz-container" id="viz-harmonic"></div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>Harmonic Classifier</h3>
+                                <span class="badge">Music</span>
+                            </div>
+                            <p>A machine learning model trained on raw audio waveforms to predict musical genres and harmonic complexity.</p>
+                            <div class="tech-stack">TensorFlow • Librosa</div>
+                            <div class="action-links">
+                                <a href="#" class="neon-btn secondary small-btn">View Source</a>
+                            </div>
                         </div>
-                        <p>A machine learning model trained on raw audio waveforms to predict musical genres and harmonic complexity.</p>
-                        <div class="tech-stack">TensorFlow • Librosa</div>
                     </div>
                     <div class="project-card neuron-node" data-project="3">
-                        <div class="project-header">
-                            <h3>The Ethical Algorithmic</h3>
-                            <span class="badge">Philosophy</span>
+                        <div class="viz-container" id="viz-ethical"></div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>The Ethical Algorithmic</h3>
+                                <span class="badge">Philosophy</span>
+                            </div>
+                            <p>An interactive essay and data visualization exploring bias in automated decision-making systems.</p>
+                            <div class="tech-stack">D3.js • HTML/CSS</div>
+                            <div class="action-links">
+                                <a href="#" class="neon-btn secondary small-btn">Read Essay</a>
+                            </div>
                         </div>
-                        <p>An interactive essay and data visualization exploring bias in automated decision-making systems.</p>
-                        <div class="tech-stack">D3.js • HTML/CSS</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Weights & Biases (Skills) -->
-        <section id="weights-biases" class="section">
+        <!-- Skills Section -->
+        <section id="skills" class="section">
             <div class="glass-panel content-wrapper">
-                <div class="meta-tag">&lt;layer_type="weights_and_biases"&gt;</div>
-                <h2>Weights & Biases</h2>
-                <p class="subtitle">The parameters that define the model.</p>
+                <div class="meta-tag">// 04_SKILLS</div>
+                <h2>Technical Toolkit</h2>
+                <p class="subtitle">The tools and technologies I use.</p>
                 <div class="skills-container">
                     <div class="skill-group">
                         <h3>Core Compute</h3>
@@ -130,16 +163,17 @@
             </div>
         </section>
 
-        <!-- Output Layer (Contact) -->
-        <footer id="output-layer" class="section">
+        <!-- Contact Section -->
+        <footer id="contact" class="section">
             <div class="glass-panel content-wrapper">
-                <div class="meta-tag">&lt;layer_type="output"&gt;</div>
-                <h2>Output Layer</h2>
-                <p>The final prediction: We should collaborate.</p>
+                <div class="meta-tag">// 05_CONTACT</div>
+                <h2>Get In Touch</h2>
+                <p>Interested in working together? Let's connect.</p>
                 <div class="contact-links">
-                    <a href="mailto:contact@example.com" class="neon-btn">Initialize Protocol: Email</a>
-                    <a href="#" class="neon-btn secondary">Access Vector: GitHub</a>
-                    <a href="#" class="neon-btn secondary">Access Vector: LinkedIn</a>
+                    <a href="mailto:contact@example.com" class="neon-btn">Email Me</a>
+                    <a href="https://github.com" target="_blank" class="neon-btn secondary">GitHub</a>
+                    <a href="https://linkedin.com" target="_blank" class="neon-btn secondary">LinkedIn</a>
+                    <a href="assets/resume.pdf" target="_blank" class="neon-btn secondary">Download CV</a>
                 </div>
                 <div class="footer-bottom">
                     <p>System v1.0.0 // 2026 // Built with raw data and neural rhythms.</p>
@@ -147,8 +181,8 @@
             </div>
         </footer>
     </main>
-
-    <!-- Scripts: GSAP & Custom Logic -->
+    <!-- Scripts: D3, GSAP & Custom Logic -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="main.js"></script>

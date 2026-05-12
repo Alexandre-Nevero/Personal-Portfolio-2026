@@ -3,3 +3,4 @@ node_modules/
 .gemini-key.tmp
 .playwright-mcp/
 *.log
+.agents
