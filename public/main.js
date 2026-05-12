@@ -165,6 +165,46 @@ animate();
 // --- GSAP ScrollTrigger Integration ---
 gsap.registerPlugin(ScrollTrigger);
 
+// --- 3D Neural Sphere Hero Animation ---
+// 1. Initial setup for 3D tilt. Because CSS uses margin:auto for centering, GSAP doesn't fight over x/y translations.
+gsap.set(".ring-1", { rotationX: 65, rotationY: 15 });
+gsap.set(".ring-2", { rotationX: 75, rotationY: -35 });
+gsap.set(".ring-3", { rotationX: 55, rotationY: 60 });
+
+// 2. Autonomous Continuous Rotation
+gsap.to(".ring-1", { rotationZ: 360, duration: 20, repeat: -1, ease: "none" });
+gsap.to(".ring-2", { rotationZ: -360, duration: 25, repeat: -1, ease: "none" });
+gsap.to(".ring-3", { rotationZ: 360, duration: 15, repeat: -1, ease: "none" });
+
+// 3. Pulsing Neurons
+gsap.to(".neuron", {
+    scale: 1.5,
+    boxShadow: "0 0 25px 5px currentColor",
+    opacity: 0.6,
+    duration: 0.8,
+    repeat: -1,
+    yoyo: true,
+    stagger: {
+        each: 0.2,
+        from: "random"
+    }
+});
+
+// 4. ScrollTrigger 3D Perspective Shift
+gsap.set(".neural-sphere-scene", { transformStyle: "preserve-3d" });
+gsap.to(".neural-sphere-scene", {
+    scrollTrigger: {
+        trigger: ".hero-section",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1
+    },
+    rotationX: 45,
+    rotationY: -30,
+    z: -100, // Push it back in 3D space
+    ease: "none"
+});
+
 // --- Navigation Scroll Logic ---
 let lastScrollY = window.scrollY;
 const nav = document.getElementById('main-nav');
