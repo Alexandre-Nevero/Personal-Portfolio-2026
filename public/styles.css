@@ -224,29 +224,84 @@ p {
     justify-content: flex-end;
 }
 
-.hero-image-wrapper {
-    width: 100%;
-    max-width: 500px;
-    aspect-ratio: 4/3;
-    border-radius: 24px;
-    background: linear-gradient(135deg, rgba(131, 56, 236, 0.2), rgba(0, 240, 255, 0.1));
-    border: 1px solid rgba(255, 255, 255, 0.05);
+/* 3D Neural Sphere */
+.neural-sphere-scene {
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1/1;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    margin: 0 auto;
 }
 
-.abstract-placeholder {
+.center-profile {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.9);
+    z-index: 10;
+    border: 2px solid rgba(0, 240, 255, 0.4);
+}
+
+.profile-placeholder {
     width: 100%;
     height: 100%;
+    background: linear-gradient(135deg, var(--color-void), var(--color-violet));
     position: relative;
 }
-
-.noise-overlay {
+.profile-placeholder::after {
+    content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.1"/%3E%3C/svg%3E');
-    mix-blend-mode: overlay;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.9) 100%);
+}
+
+.orbit-ring {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 0, 110, 0.15);
+    transform-style: preserve-3d;
+}
+
+.ring-1 { width: 260px; height: 260px; border-color: rgba(255, 0, 110, 0.2); --rx: 65deg; --ry: 15deg; animation: spin 20s linear infinite; }
+.ring-2 { width: 340px; height: 340px; border-color: rgba(0, 240, 255, 0.15); --rx: 75deg; --ry: -35deg; animation: spin-reverse 25s linear infinite; }
+.ring-3 { width: 420px; height: 420px; border-color: rgba(6, 214, 160, 0.15); --rx: 55deg; --ry: 60deg; animation: spin 15s linear infinite; }
+
+.neuron {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -4px;
+    margin-left: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.ring-1 .neuron { --ty: -130px; --glow-color: var(--color-magenta); background: var(--color-magenta); animation: pulse 1.6s ease-in-out infinite alternate; animation-delay: calc(var(--delay, 0) * 1s); }
+.ring-2 .neuron { --ty: -170px; --glow-color: var(--color-cyan); background: var(--color-cyan); animation: pulse 1.6s ease-in-out infinite alternate; animation-delay: calc(var(--delay, 0) * 1s); }
+.ring-3 .neuron { --ty: -210px; --glow-color: var(--color-green); background: var(--color-green); animation: pulse 1.6s ease-in-out infinite alternate; animation-delay: calc(var(--delay, 0) * 1s); }
+
+@keyframes spin {
+    from { transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(0deg); }
+    to { transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(360deg); }
+}
+
+@keyframes spin-reverse {
+    from { transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(0deg); }
+    to { transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(-360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: rotate(var(--angle)) translateY(var(--ty)) rotateX(-90deg) scale(1); opacity: 1; box-shadow: 0 0 15px 2px var(--glow-color); }
+    100% { transform: rotate(var(--angle)) translateY(var(--ty)) rotateX(-90deg) scale(1.5); opacity: 0.6; box-shadow: 0 0 25px 5px var(--glow-color); }
 }
 
 /* Minimal Scroll Indicator */
