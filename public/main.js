@@ -166,42 +166,45 @@ animate();
 gsap.registerPlugin(ScrollTrigger);
 
 // --- 3D Neural Sphere Hero Animation ---
-// 1. Initial setup for 3D tilt. Because CSS uses margin:auto for centering, GSAP doesn't fight over x/y translations.
-gsap.set(".ring-1", { rotationX: 65, rotationY: 15 });
-gsap.set(".ring-2", { rotationX: 75, rotationY: -35 });
-gsap.set(".ring-3", { rotationX: 55, rotationY: 60 });
+// The continuous orbiting and pulsing is handled entirely by native CSS keyframes.
+// We use GSAP purely for dramatic 3D perspective and parallax shifts on scroll.
 
-// 2. Autonomous Continuous Rotation
-gsap.to(".ring-1", { rotationZ: 360, duration: 20, repeat: -1, ease: "none" });
-gsap.to(".ring-2", { rotationZ: -360, duration: 25, repeat: -1, ease: "none" });
-gsap.to(".ring-3", { rotationZ: 360, duration: 15, repeat: -1, ease: "none" });
-
-// 3. Pulsing Neurons
-gsap.to(".neuron", {
-    scale: 1.5,
-    boxShadow: "0 0 25px 5px currentColor",
-    opacity: 0.6,
-    duration: 0.8,
-    repeat: -1,
-    yoyo: true,
-    stagger: {
-        each: 0.2,
-        from: "random"
-    }
-});
-
-// 4. ScrollTrigger 3D Perspective Shift
 gsap.set(".neural-sphere-scene", { transformStyle: "preserve-3d" });
+
+// Tilt the entire scene dynamically as user scrolls down
 gsap.to(".neural-sphere-scene", {
     scrollTrigger: {
-        trigger: ".hero-section",
+        trigger: "#home",
         start: "top top",
         end: "bottom top",
         scrub: 1
     },
-    rotationX: 45,
-    rotationY: -30,
-    z: -100, // Push it back in 3D space
+    rotationX: 35,
+    rotationY: -25,
+    z: -50,
+    ease: "none"
+});
+
+// Expand the sphere dynamically: Pull rings apart in 3D space on scroll
+gsap.to(".ring-1", {
+    "--tz": "150px", // Pull inner ring towards the screen
+    scrollTrigger: {
+        trigger: "#home",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1
+    },
+    ease: "none"
+});
+
+gsap.to(".ring-3", {
+    "--tz": "-150px", // Push outer ring back into the screen
+    scrollTrigger: {
+        trigger: "#home",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1
+    },
     ease: "none"
 });
 
